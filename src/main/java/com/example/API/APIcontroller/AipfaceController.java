@@ -1,5 +1,6 @@
 package com.example.API.APIcontroller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONObject;
@@ -7,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.druid.sql.ast.statement.SQLForeignKeyImpl.Match;
+import com.baidu.aip.face.AipFace;
+import com.baidu.aip.face.MatchRequest;
 import com.example.API.APIBean.AipBean;
 import com.example.API.APIUtil.AipFaceUtil;
 
@@ -28,11 +32,11 @@ public class AipfaceController {
 		// 图片URL地址
 		String image = aipBean.getImagein();
 		// 选择图片传入类型为URL
-		String imageType = "URL";
+		String imageType = "BASE64";
 		// 人脸检测
 		JSONObject res = AipFaceUtil.client.detect(image, imageType, options);
 		// 输出
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		// 返回
 		return res;
 	}
@@ -46,11 +50,11 @@ public class AipfaceController {
 		options.put("liveness_control", "HIGH"); // 活体判断
 		options.put("max_user_num", "1"); // 检索最相似的一个
 		String image = aipBean.getImagein();
-		String imageType = "URL";
+		String imageType = "BASE64";
 		String groupIdList = aipBean.getGroup(); // 指定分组,String中用逗号隔开
 		// 人脸搜索
 		JSONObject res = AipFaceUtil.client.search(image, imageType, groupIdList, options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 
@@ -63,12 +67,12 @@ public class AipfaceController {
 		options.put("quality_control", "HIGH"); // 照片质量
 		options.put("liveness_control", "HIGH"); // 活体检测程度
 		String image = aipBean.getImagein();
-		String imageType = "URL";
+		String imageType = "BASE64";
 		String groupId = aipBean.getGroup(); // 要进行注册的用户组
 		String userId = aipBean.getUser(); // 要进行注册的用户
 		// 人脸注册
 		JSONObject res = AipFaceUtil.client.addUser(image, imageType, groupId, userId, options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 
@@ -81,12 +85,12 @@ public class AipfaceController {
 		options.put("quality_control", "HIGH"); // 照片质量
 		options.put("liveness_control", "HIGH"); // 活体检测程度
 		String image = aipBean.getImagein();
-		String imageType = "URL";
+		String imageType = "BASE64";
 		String groupId = aipBean.getGroup(); // 要进行注册的用户组
 		String userId = aipBean.getUser(); // 要进行注册的用户
 		// 人脸更新
 		JSONObject res = AipFaceUtil.client.updateUser(image, imageType, groupId, userId, options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 
@@ -99,7 +103,7 @@ public class AipfaceController {
 		String groupId = aipBean.getGroup(); // 要进行注册的用户组
 		// 获取用户人脸列表
 		JSONObject res = AipFaceUtil.client.faceGetlist(userId, groupId, options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 
@@ -113,7 +117,7 @@ public class AipfaceController {
 		String userId = aipBean.getUser(); // 要复制的用户id
 		// 复制用户
 		JSONObject res = AipFaceUtil.client.userCopy(userId, options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 
@@ -125,7 +129,7 @@ public class AipfaceController {
 		String groupId = aipBean.getGroup(); // 组名
 		// 创建用户组
 		JSONObject res = AipFaceUtil.client.groupAdd(groupId, options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 
@@ -137,7 +141,7 @@ public class AipfaceController {
 		String groupId = aipBean.getGroup(); // 组名
 		// 删除用户组
 		JSONObject res = AipFaceUtil.client.groupDelete(groupId, options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 
@@ -149,7 +153,7 @@ public class AipfaceController {
 
 		// 参数为二进制数组
 		JSONObject res = AipFaceUtil.client.videoFaceliveness(null, aipBean.getFile(), options);
-		System.out.println(res.toString());
+		System.out.println(res.toString(2));
 		return res;
 	}
 

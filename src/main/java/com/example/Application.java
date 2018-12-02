@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller  //controller返回页面,restcontroller返回json数据
 @SpringBootApplication
+@EnableCaching
 public class Application {
 	
 	@RequestMapping("/helloworld")
 	public String helloworld()
 	{
-		System.out.println("123");
 		return "test";
 	}
 
