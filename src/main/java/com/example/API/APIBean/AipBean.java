@@ -2,6 +2,7 @@ package com.example.API.APIBean;
 
 public class AipBean {
 	private String imagein;
+	private String[] imagegroupin;
 	private String group;
 	private String user;
 	private String userinfo;
@@ -50,5 +51,10 @@ public class AipBean {
 	public void setFile(byte[] file) {
 		this.file = file;
 	}
-	
+	public String[] getImagegroupin() {
+		return imagegroupin;
+	}
+	public void setImagegroupin(String[] imagegroupin) {
+		this.imagegroupin = imagegroupin;
+	}
 }
