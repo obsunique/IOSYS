@@ -19,29 +19,30 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 
+
 @Configuration
 //扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = ClusterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "clusterSqlSessionFactory")
-public class ClusterDataSourceConfig {
+@MapperScan(basePackages = TrainDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "trainSqlSessionFactory")
+public class TrainDataSourceConfig {
 
- // 精确到 cluster 目录，以便跟其他数据源隔离
- static final String PACKAGE = "com.example.mapper.cluster";
- static final String MAPPER_LOCATION = "classpath:mapper/cluster/*.xml";
+ // 精确到 master 目录，以便跟其他数据源隔离
+ static final String PACKAGE = "com.example.mapper.train";
+ static final String MAPPER_LOCATION = "classpath:mapper/train/*.xml";
 
- @Value("${cluster.datasource.url}")
+ @Value("${train.datasource.url}")
  private String url;
 
- @Value("${cluster.datasource.username}")
+ @Value("${train.datasource.username}")
  private String user;
 
- @Value("${cluster.datasource.password}")
+ @Value("${train.datasource.password}")
  private String password;
 
- @Value("${cluster.datasource.driverClassName}")
+ @Value("${train.datasource.driverClassName}")
  private String driverClass;
 
- @Bean(name = "clusterDataSource")
- public DataSource clusterDataSource() {
+ @Bean(name = "trainDataSource")
+ public DataSource masterDataSource() {
      DruidDataSource dataSource = new DruidDataSource();
      dataSource.setDriverClassName(driverClass);
      dataSource.setUrl(url);
@@ -50,18 +51,18 @@ public class ClusterDataSourceConfig {
      return dataSource;
  }
 
- @Bean(name = "clusterTransactionManager")
- public DataSourceTransactionManager clusterTransactionManager() {
-     return new DataSourceTransactionManager(clusterDataSource());
+ @Bean(name = "trainTransactionManager")
+ public DataSourceTransactionManager masterTransactionManager() {
+     return new DataSourceTransactionManager(masterDataSource());
  }
 
- @Bean(name = "clusterSqlSessionFactory")
- public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("clusterDataSource") DataSource clusterDataSource)
+ @Bean(name = "trainSqlSessionFactory")
+ public SqlSessionFactory masterSqlSessionFactory(@Qualifier("trainDataSource") DataSource masterDataSource)
          throws Exception {
      final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-     sessionFactory.setDataSource(clusterDataSource);
+     sessionFactory.setDataSource(masterDataSource);
      sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-             .getResources(ClusterDataSourceConfig.MAPPER_LOCATION));
+             .getResources(TrainDataSourceConfig.MAPPER_LOCATION));
      return sessionFactory.getObject();
  }
  

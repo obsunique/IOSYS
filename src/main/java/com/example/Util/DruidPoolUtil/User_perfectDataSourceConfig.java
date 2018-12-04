@@ -19,31 +19,29 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 
-
 @Configuration
 //扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
-public class MasterDataSourceConfig {
+@MapperScan(basePackages = User_perfectDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "user_perfectSqlSessionFactory")
+public class User_perfectDataSourceConfig {
 
- // 精确到 master 目录，以便跟其他数据源隔离
- static final String PACKAGE = "com.example.mapper.master";
- static final String MAPPER_LOCATION = "classpath:mapper/master/*.xml";
+ // 精确到 cluster 目录，以便跟其他数据源隔离
+ static final String PACKAGE = "com.example.mapper.user_perfect";
+ static final String MAPPER_LOCATION = "classpath:mapper/user_perfect/*.xml";
 
- @Value("${master.datasource.url}")
+ @Value("${user_perfect.datasource.url}")
  private String url;
 
- @Value("${master.datasource.username}")
+ @Value("${user_perfect.datasource.username}")
  private String user;
 
- @Value("${master.datasource.password}")
+ @Value("${user_perfect.datasource.password}")
  private String password;
 
- @Value("${master.datasource.driverClassName}")
+ @Value("${user_perfect.datasource.driverClassName}")
  private String driverClass;
 
- @Bean(name = "masterDataSource")
- @Primary
- public DataSource masterDataSource() {
+ @Bean(name = "user_perfectDataSource")
+ public DataSource clusterDataSource() {
      DruidDataSource dataSource = new DruidDataSource();
      dataSource.setDriverClassName(driverClass);
      dataSource.setUrl(url);
@@ -52,25 +50,22 @@ public class MasterDataSourceConfig {
      return dataSource;
  }
 
- @Bean(name = "masterTransactionManager")
- @Primary
- public DataSourceTransactionManager masterTransactionManager() {
-     return new DataSourceTransactionManager(masterDataSource());
+ @Bean(name = "user_perfectTransactionManager")
+ public DataSourceTransactionManager clusterTransactionManager() {
+     return new DataSourceTransactionManager(clusterDataSource());
  }
 
- @Bean(name = "masterSqlSessionFactory")
- @Primary
- public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
+ @Bean(name = "user_perfectSqlSessionFactory")
+ public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("user_perfectDataSource") DataSource clusterDataSource)
          throws Exception {
      final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-     sessionFactory.setDataSource(masterDataSource);
+     sessionFactory.setDataSource(clusterDataSource);
      sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-             .getResources(MasterDataSourceConfig.MAPPER_LOCATION));
+             .getResources(User_perfectDataSourceConfig.MAPPER_LOCATION));
      return sessionFactory.getObject();
  }
  
  @Bean
- @Primary
  public ServletRegistrationBean statViewServle(){
      ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
      //白名单：
@@ -86,7 +81,6 @@ public class MasterDataSourceConfig {
  }
  
  @Bean
- @Primary
  public FilterRegistrationBean statFilter(){
      FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
      //添加过滤规则.

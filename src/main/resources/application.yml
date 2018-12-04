@@ -4,7 +4,6 @@ logging:
     root: info      
 
 spring: 
-
   redis:
     database: 0
     host: 47.107.248.227
