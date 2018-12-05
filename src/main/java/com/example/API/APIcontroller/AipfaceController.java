@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.druid.sql.ast.statement.SQLForeignKeyImpl.Match;
-import com.baidu.aip.face.AipFace;
 import com.baidu.aip.face.FaceVerifyRequest;
-import com.baidu.aip.face.MatchRequest;
 import com.example.API.APIBean.AipBean;
 import com.example.API.APIUtil.AipFaceUtil;
 
@@ -37,7 +34,7 @@ public class AipfaceController {
 		// 人脸检测
 		JSONObject res = AipFaceUtil.client.detect(image, imageType, options);
 		// 输出
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		// 返回
 		return res;
 	}
@@ -55,7 +52,7 @@ public class AipfaceController {
 		String groupIdList = aipBean.getGroup(); // 指定分组,String中用逗号隔开
 		// 人脸搜索
 		JSONObject res = AipFaceUtil.client.search(image, imageType, groupIdList, options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
 
@@ -73,7 +70,7 @@ public class AipfaceController {
 		String userId = aipBean.getUser(); // 要进行注册的用户
 		// 人脸注册
 		JSONObject res = AipFaceUtil.client.addUser(image, imageType, groupId, userId, options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
 
@@ -91,7 +88,7 @@ public class AipfaceController {
 		String userId = aipBean.getUser(); // 要进行注册的用户
 		// 人脸更新
 		JSONObject res = AipFaceUtil.client.updateUser(image, imageType, groupId, userId, options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
 
@@ -104,7 +101,7 @@ public class AipfaceController {
 		String groupId = aipBean.getGroup(); // 要进行注册的用户组
 		// 获取用户人脸列表
 		JSONObject res = AipFaceUtil.client.faceGetlist(userId, groupId, options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
 
@@ -118,7 +115,7 @@ public class AipfaceController {
 		String userId = aipBean.getUser(); // 要复制的用户id
 		// 复制用户
 		JSONObject res = AipFaceUtil.client.userCopy(userId, options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
 
@@ -130,7 +127,7 @@ public class AipfaceController {
 		String groupId = aipBean.getGroup(); // 组名
 		// 创建用户组
 		JSONObject res = AipFaceUtil.client.groupAdd(groupId, options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
 
@@ -142,7 +139,7 @@ public class AipfaceController {
 		String groupId = aipBean.getGroup(); // 组名
 		// 删除用户组
 		JSONObject res = AipFaceUtil.client.groupDelete(groupId, options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
 
@@ -154,34 +151,32 @@ public class AipfaceController {
 
 		// 参数为二进制数组
 		JSONObject res = AipFaceUtil.client.videoFaceliveness(null, aipBean.getFile(), options);
-		System.out.println(res.toString(2));
+		System.out.println(res.toString());
 		return res;
 	}
-	
-	@RequestMapping("/faceverify")   //在线活体检测
-    private JSONObject faceverify(@RequestBody AipBean aipBean)   //传入base64的图片字符串数组
-    {
-		FaceVerifyRequest req = new FaceVerifyRequest(aipBean.getImagegroupin()[0], "BASE64","quality");   //²ÎÊý
-        
-        FaceVerifyRequest req1 = new FaceVerifyRequest(aipBean.getImagegroupin()[1], "BASE64","quality");  //²ÎÊý
 
-        FaceVerifyRequest req2 = new FaceVerifyRequest(aipBean.getImagegroupin()[2], "BASE64","quality");  //²ÎÊý
+	@RequestMapping("/faceverify") // 在线活体检测
+	private JSONObject faceverify(@RequestBody AipBean aipBean) // 传入base64的图片字符串数组
+	{
+		FaceVerifyRequest req = new FaceVerifyRequest(aipBean.getImagegroupin()[0], "BASE64", "quality"); // ²ÎÊý
 
-        ArrayList<FaceVerifyRequest> list = new ArrayList<FaceVerifyRequest>();
-        
-        list.add(req);
+		FaceVerifyRequest req1 = new FaceVerifyRequest(aipBean.getImagegroupin()[1], "BASE64", "quality"); // ²ÎÊý
 
-        list.add(req1);
+		FaceVerifyRequest req2 = new FaceVerifyRequest(aipBean.getImagegroupin()[2], "BASE64", "quality"); // ²ÎÊý
 
-        list.add(req2);
-        
-        JSONObject res = AipFaceUtil.client.faceverify(list);
-        
-        System.out.println(res.toString(2));
-        
-        return res;
-    }
+		ArrayList<FaceVerifyRequest> list = new ArrayList<FaceVerifyRequest>();
 
-	
+		list.add(req);
+
+		list.add(req1);
+
+		list.add(req2);
+
+		JSONObject res = AipFaceUtil.client.faceverify(list);
+
+		System.out.println(res.toString());
+
+		return res;
+	}
 
 }
