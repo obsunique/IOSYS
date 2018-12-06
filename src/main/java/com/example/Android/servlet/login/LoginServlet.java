@@ -12,6 +12,8 @@ public interface LoginServlet {
 
 	public int userUpdata(Users user);// 更改用户数据
 
-	public Users checkUser(int userid); // 查找用户数据
+	public Users checkUserById(int userid); // id查用户数据
+
+	public Users checkUserByPhone(String phoneNumber);// 用手机号码查用户
 
 }

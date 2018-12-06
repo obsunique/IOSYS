@@ -23,7 +23,7 @@ public class LoginServletImpl implements LoginServlet {
 	private UserPerfectMapper userperfectmapper;
 
 	/*
-	 * 用户注册 若账号存在则返回false（注册失败），不存在则返回true（注册成功）
+	 * 用户注册 若账号存在则返回0（注册失败），不存在则返回1（注册成功）
 	 */
 	@Override
 	public int userRegister(Users user) {
@@ -107,12 +107,23 @@ public class LoginServletImpl implements LoginServlet {
 		return flag;
 	}
 
-	// 用过id或者手机号码查找用户
+	// 用id查找用户
 	@Override
-	public Users checkUser(int userid) {
+	public Users checkUserById(int userid) {
 		Users user = usersmapper.selectByPrimaryKey(userid);
 		return user;
 
 	}
 
+	// 用手机号码查找用户
+	@Override
+	public Users checkUserByPhone(String phoneNumber) {
+		UsersExample example = new UsersExample();
+		example.createCriteria().andUserphoneEqualTo(phoneNumber);
+		List<Users> userlist = usersmapper.selectByExample(example);
+		if (userlist.size() > 0)
+			return userlist.get(0);
+		return null;
+
+	}
 }
