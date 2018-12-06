@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.PC.Admins.servlet.AdminServlet;
-import com.example.mapper.admin.AdminsMapper;
+import com.example.mapper.user.AdminsMapper;
 import com.example.pojo.Admins;
 import com.example.pojo.AdminsExample;
 

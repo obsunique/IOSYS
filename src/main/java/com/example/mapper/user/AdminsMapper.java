@@ -1,4 +1,4 @@
-package com.example.mapper.admin;
+package com.example.mapper.user;
 
 import com.example.pojo.Admins;
 import com.example.pojo.AdminsExample;
