@@ -13,14 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
  * @author hadoop
  *
  */
+
 public class managementAdapter implements HandlerInterceptor {
 
 	/**
 	 * 
 	 */
-	public managementAdapter() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
