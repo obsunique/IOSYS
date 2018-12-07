@@ -3,12 +3,14 @@ package com.example.PC.Admins.servlet.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.PC.Admins.servlet.AdminServlet;
 import com.example.mapper.user.AdminsMapper;
 import com.example.pojo.Admins;
 import com.example.pojo.AdminsExample;
 
+@Service
 public class AdminServletImpl implements AdminServlet {
 
 	@Autowired

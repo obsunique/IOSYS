@@ -3,13 +3,15 @@ package com.example.Android.servlet.Impl.message;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.example.Android.servlet.message.UserMessageServlet;
+import com.example.Android.servlet.UserMessageServlet;
 import com.example.mapper.user_perfect.UserPerfectMapper;
 import com.example.pojo.UserPerfect;
 import com.example.pojo.UserPerfectExample;
 import com.example.pojo.UserPerfectWithBLOBs;
 
+@Service
 public class UserMessageServletImpl implements UserMessageServlet {
 
 	@Autowired

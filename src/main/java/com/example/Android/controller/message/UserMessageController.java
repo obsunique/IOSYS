@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.Android.servlet.login.LoginServlet;
-import com.example.Android.servlet.message.UserMessageServlet;
+import com.example.Android.servlet.LoginServlet;
+import com.example.Android.servlet.UserMessageServlet;
 import com.example.pojo.UserPerfectWithBLOBs;
 import com.example.pojo.Users;
 import com.example.vo.UserAllMessage;

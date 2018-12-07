@@ -14,6 +14,10 @@
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 
 <script type="text/javascript" src="js/plugins/charts/excanvas.min.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.orderBars.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.pie.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.resize.js"></script>
 <script type="text/javascript" src="js/plugins/charts/jquery.sparkline.min.js"></script>
 
 <script type="text/javascript" src="js/plugins/forms/uniform.js"></script>
@@ -54,6 +58,8 @@
 <script type="text/javascript" src="js/plugins/elfinder.min.js"></script>
 
 <script type="text/javascript" src="js/custom.js"></script>
+
+<script type="text/javascript" src="js/charts/chart.js"></script>
 
 <!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  --></head>
 
@@ -97,9 +103,9 @@
     
     <!-- Left navigation -->
     <ul id="menu" class="nav">
-        <li class="dash"><a href="index.html" title=""><span>Dashboard</span></a></li>
-        <li class="charts"><a href="charts.html" title=""><span>Statistics and charts</span></a></li>
-        <li class="forms"><a href="#" title="" class="exp"><span>Forms stuff</span><strong>4</strong></a>
+        <li class="dash"><a href="index.html" title="" class="active"><span>主页</span></a></li>
+        <li class="charts"><a href="charts.html" title=""><span>数据统计</span></a></li>
+        <li class="forms"><a href="#" title="" class="exp"><span>紧急修改</span><strong>4</strong></a>
             <ul class="sub">
                 <li><a href="forms.html" title="">Form elements</a></li>
                 <li><a href="form_validation.html" title="">Validation</a></li>
@@ -107,32 +113,22 @@
                 <li class="last"><a href="form_wizards.html" title="">Wizards</a></li>
             </ul>
         </li>
-        <li class="ui"><a href="ui_elements.html" title=""><span>Interface elements</span></a></li>
-        <li class="tables"><a href="tables.html" title="" class="active exp" id="current"><span>Tables</span><strong>3</strong></a>
+        <li class="ui"><a href="user.html" title=""><span>用户</span></a></li>
+        <li class="tables"><a href="tables.html" title="" class="exp"><span>业务统计</span><strong>3</strong></a>
             <ul class="sub">
                 <li><a href="table_static.html" title="">Static tables</a></li>
-                <li class="this"><a href="table_dynamic.html" title="">Dynamic table</a></li>
+                <li><a href="table_dynamic.html" title="">Dynamic table</a></li>
                 <li class="last"><a href="table_sortable_resizable.html" title="">Sortable &amp; resizable tables</a></li>
             </ul>
         </li>
-        <li class="widgets"><a href="#" title="" class="exp"><span>Widgets and grid</span><strong>2</strong></a>
+        <li class="widgets"><a href="#" title="" class="exp"><span>人脸管理</span><strong>2</strong></a>
             <ul class="sub">
-                <li><a href="widgets.html" title="">Widgets</a></li>
+                <li><a href="widgets.html" title=""></a></li>
                 <li class="last"><a href="grid.html" title="">Grid</a></li>
             </ul>
         </li>
-        <li class="errors"><a href="#" title="" class="exp"><span>Error pages</span><strong>6</strong></a>
-            <ul class="sub">
-                <li><a href="403.html" title="">403 page</a></li>
-                <li><a href="404.html" title="">404 page</a></li>
-                <li><a href="405.html" title="">405 page</a></li>
-                <li><a href="500.html" title="">500 page</a></li>
-                <li><a href="503.html" title="">503 page</a></li>
-                <li class="last"><a href="offline.html" title="">Website is offline</a></li>
-            </ul>
-        </li>
-        <li class="files"><a href="file_manager.html" title=""><span>File manager</span></a></li>
-        <li class="typo"><a href="#" title="" class="exp"><span>Other pages</span><strong>3</strong></a>
+        <li class="files"><a href="file_manager.html" title=""><span>系统设置</span></a></li>
+        <li class="typo"><a href="#" title="" class="exp"><span>关于我们</span><strong>3</strong></a>
             <ul class="sub">
                 <li><a href="typography.html" title="">Typography</a></li>
                 <li><a href="calendar.html" title="">Calendar</a></li>
@@ -178,7 +174,7 @@
         
         <div class="cLine"></div>
         <div class="smalldd">
-            <span class="goTo"><img src="images/icons/light/frames.png" alt="" />Dynamic table</span>
+            <span class="goTo"><img src="images/icons/light/home.png" alt="" />Dashboard</span>
             <ul class="smallDropdown">
                 <li><a href="index.html" title=""><img src="images/icons/light/home.png" alt="" />Dashboard</a></li>
                 <li><a href="charts.html" title=""><img src="images/icons/light/stats.png" alt="" />Statistics and charts</a></li>
@@ -231,19 +227,19 @@
     <div class="titleArea">
         <div class="wrapper">
             <div class="pageTitle">
-                <h5>Dynamic table</h5>
+                <h5>Dashboard</h5>
                 <span>Do your layouts deserve better than Lorem Ipsum.</span>
             </div>
             <div class="middleNav">
                 <ul>
-                    <li class="mUser"><a href="#" title=""><span class="users"></span></a>
+                    <li class="mUser"><a title=""><span class="users"></span></a>
                         <ul class="mSub1">
                             <li><a href="#" title="">Add user</a></li>
                             <li><a href="#" title="">Statistics</a></li>
                             <li><a href="#" title="">Orders</a></li>
                         </ul>
                     </li>
-                    <li class="mMessages"><a href="#" title=""><span class="messages"></span></a>
+                    <li class="mMessages"><a title=""><span class="messages"></span></a>
                         <ul class="mSub2">
                             <li><a href="#" title="">New tickets<span class="numberRight">8</span></a></li>
                             <li><a href="#" title="">Pending tickets<span class="numberRight">12</span></a></li>
@@ -251,7 +247,7 @@
                         </ul>
                     </li>
                     <li class="mFiles"><a href="#" title="Or you can use a tooltip" class="tipN"><span class="files"></span></a></li>
-                    <li class="mOrders"><a href="#" title=""><span class="orders"></span><span class="numberMiddle">8</span></a>
+                    <li class="mOrders"><a title=""><span class="orders"></span><span class="numberMiddle">8</span></a>
                         <ul class="mSub4">
                             <li><a href="#" title="">Pending uploads</a></li>
                             <li><a href="#" title="">Statistics</a></li>
@@ -267,7 +263,7 @@
     
     <div class="line"></div>
     
-    <!-- Page statistics area -->
+    <!-- Page statistics and control buttons area -->
     <div class="statsRow">
         <div class="wrapper">
         	<div class="controlB">
@@ -289,368 +285,174 @@
     <!-- Main content wrapper -->
     <div class="wrapper">
     
-        <!-- Dynamic table -->
-        <div class="widget">
-            <div class="title"><img src="images/icons/dark/full2.png" alt="" class="titleIcon" /><h6>Dynamic table</h6></div>                          
-            <table cellpadding="0" cellspacing="0" border="0" class="display dTable">
-            <thead>
-            <tr>
-            <th>Rendering engine</th>
-            <th>Browser</th>
-            <th>Platform(s)</th>
-            <th>Engine version</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="gradeX">
-            <td>Trident</td>
-            <td>Internet
-            Explorer 4.0</td>
-            <td>Win 95+</td>
-            <td class="center">4</td>
-            </tr>
-            <tr class="gradeC">
-            <td>Trident</td>
-            <td>Internet
-            Explorer 5.0</td>
-            <td>Win 95+</td>
-            <td class="center">5</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Trident</td>
-            <td>Internet
-            Explorer 5.5</td>
-            <td>Win 95+</td>
-            <td class="center">5.5</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Trident</td>
-            <td>Internet
-            Explorer 6</td>
-            <td>Win 98+</td>
-            <td class="center">6</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Trident</td>
-            <td>Internet Explorer 7</td>
-            <td>Win XP SP2+</td>
-            <td class="center">7</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Trident</td>
-            <td>AOL browser (AOL desktop)</td>
-            <td>Win XP</td>
-            <td class="center">6</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 1.0</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.7</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 1.5</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 2.0</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 3.0</td>
-            <td>Win 2k+ / OSX.3+</td>
-            <td class="center">1.9</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Camino 1.0</td>
-            <td>OSX.2+</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Camino 1.5</td>
-            <td>OSX.3+</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Netscape 7.2</td>
-            <td>Win 95+ / Mac OS 8.6-9.2</td>
-            <td class="center">1.7</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Netscape Browser 8</td>
-            <td>Win 98SE+</td>
-            <td class="center">1.7</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Netscape Navigator 9</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.0</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">1</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.1</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">1.1</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.2</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">1.2</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.3</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">1.3</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.4</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">1.4</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.5</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">1.5</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.6</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">1.6</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.7</td>
-            <td>Win 98+ / OSX.1+</td>
-            <td class="center">1.7</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Mozilla 1.8</td>
-            <td>Win 98+ / OSX.1+</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Seamonkey 1.1</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Epiphany 2.20</td>
-            <td>Gnome</td>
-            <td class="center">1.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Webkit</td>
-            <td>Safari 1.2</td>
-            <td>OSX.3</td>
-            <td class="center">125.5</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Webkit</td>
-            <td>Safari 1.3</td>
-            <td>OSX.3</td>
-            <td class="center">312.8</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Webkit</td>
-            <td>Safari 2.0</td>
-            <td>OSX.4+</td>
-            <td class="center">419.3</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Webkit</td>
-            <td>Safari 3.0</td>
-            <td>OSX.4+</td>
-            <td class="center">522.1</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Webkit</td>
-            <td>OmniWeb 5.5</td>
-            <td>OSX.4+</td>
-            <td class="center">420</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Webkit</td>
-            <td>iPod Touch / iPhone</td>
-            <td>iPod</td>
-            <td class="center">420.1</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Webkit</td>
-            <td>S60</td>
-            <td>S60</td>
-            <td class="center">413</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera 7.0</td>
-            <td>Win 95+ / OSX.1+</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera 7.5</td>
-            <td>Win 95+ / OSX.2+</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera 8.0</td>
-            <td>Win 95+ / OSX.2+</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera 8.5</td>
-            <td>Win 95+ / OSX.2+</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera 9.0</td>
-            <td>Win 95+ / OSX.3+</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera 9.2</td>
-            <td>Win 88+ / OSX.3+</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera 9.5</td>
-            <td>Win 88+ / OSX.3+</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Opera for Wii</td>
-            <td>Wii</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Nokia N800</td>
-            <td>N800</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Presto</td>
-            <td>Nintendo DS browser</td>
-            <td>Nintendo DS</td>
-            <td class="center">8.5</td>
-            </tr>
-            <tr class="gradeC">
-            <td>KHTML</td>
-            <td>Konqureror 3.1</td>
-            <td>KDE 3.1</td>
-            <td class="center">3.1</td>
-            </tr>
-            <tr class="gradeA">
-            <td>KHTML</td>
-            <td>Konqureror 3.3</td>
-            <td>KDE 3.3</td>
-            <td class="center">3.3</td>
-            </tr>
-            <tr class="gradeA">
-            <td>KHTML</td>
-            <td>Konqureror 3.5</td>
-            <td>KDE 3.5</td>
-            <td class="center">3.5</td>
-            </tr>
-            <tr class="gradeX">
-            <td>Tasman</td>
-            <td>Internet Explorer 4.5</td>
-            <td>Mac OS 8-9</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeC">
-            <td>Tasman</td>
-            <td>Internet Explorer 5.1</td>
-            <td>Mac OS 7.6-9</td>
-            <td class="center">1</td>
-            </tr>
-            <tr class="gradeC">
-            <td>Tasman</td>
-            <td>Internet Explorer 5.2</td>
-            <td>Mac OS 8-X</td>
-            <td class="center">1</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Misc</td>
-            <td>NetFront 3.1</td>
-            <td>Embedded devices</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeA">
-            <td>Misc</td>
-            <td>NetFront 3.4</td>
-            <td>Embedded devices</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeX">
-            <td>Misc</td>
-            <td>Dillo 0.8</td>
-            <td>Embedded devices</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeX">
-            <td>Misc</td>
-            <td>Links</td>
-            <td>Text only</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeX">
-            <td>Misc</td>
-            <td>Lynx</td>
-            <td>Text only</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeC">
-            <td>Misc</td>
-            <td>IE Mobile</td>
-            <td>Windows Mobile 6</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeC">
-            <td>Misc</td>
-            <td>PSP browser</td>
-            <td>PSP</td>
-            <td class="center">-</td>
-            </tr>
-            <tr class="gradeU">
-            <td>Other browsers</td>
-            <td>All others</td>
-            <td>-</td>
-            <td class="center">-</td>
-            </tr>
-            </tbody>
-            </table>  
+        <!-- Note -->
+        <div class="nNote nInformation hideit">
+            <p><strong>INFORMATION: </strong>Top buttons area has 3 versions - 2 kinds of buttons and statistics. All of them could be viewed on <a href="ui_elements.html" title="">Interface elements page</a></p>
         </div>
+        
+        <!-- Chart -->
+        <div class="widget chartWrapper">
+            <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>Chart</h6></div>
+            <div class="body"><div class="chart"></div></div>
+        </div>
+        
+        <!-- Widgets -->
+        <div class="widgets">
+            <div class="oneTwo">
+            
+                <!-- Partners list widget -->
+                
+            
+                <!-- Website stats widget -->
+                <div class="widget">
+                    <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>网站统计</h6></div>
+                    <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+                        <thead>
+                            <tr>
+                                <td width="80">Amount</td>
+                                <td>Description</td>
+                                <td width="80">Changes</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">980</a></td>
+                                <td>returned visitors</td>
+                                <td><span class="statsPlus">0.32%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">1545</a></td>
+                                <td>new registrations</td>
+                                <td><span class="statsMinus">82.3%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">457</a></td>
+                                <td>new affiliates registrations</td>
+                                <td><span class="statsPlus">100%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">9543</a></td>
+                                <td>new visitors</td>
+                                <td><span class="statsPlus">4.99%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">354</a></td>
+                                <td>new pending comments</td>
+                                <td><span class="statsMinus">9.67%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>   
+                </div>
+            
+                <!-- Latest update widget -->
+                
+            </div>
+        
+        	<!-- 2 columns widgets -->
+            <div class="oneTwo">
+            
+                <!-- Search -->
+                
+            
+                <!-- Purchase info widget -->
+                
+        
+                <!-- New users widget -->
+                <div class="widget">
+                    <div class="title"><img src="images/icons/dark/add.png" alt="" class="titleIcon" /><h6>新用户</h6></div>
+                    <div class="wUserInfo">
+                        <a href="#" title="" class="wUserPic"><img src="images/user.png" alt="" /></a>
+                        <ul class="leftList">
+                            <li><a href="#" title=""><strong>用户</strong></a></li>
+                            <li><a href="#" title="">手机</a></li>
+                        </ul>
+                        <ul class="rightList">
+                            <li><a href="#" class="green">查看<strong></strong></a></li>
+                            <li><a href="#" class="red">日期</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="cLine"></div>    
+                </div>
+                
+            	<!-- My tasks table widget -->             
+                <div class="clear"></div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    	
+        <!-- Events calendar -->
+        
+    
+        <!-- Media table -->
+        <div class="widget">
+            <div class="title"><span class="titleIcon"><input type="checkbox" id="titleCheck" name="titleCheck" /></span><h6>Media table</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="sTable withCheck mTable" id="checkAll">
+                <thead>
+                    <tr>
+                        <td><img src="images/icons/tableArrows.png" alt="" /></td>
+                        <td>Image</td>
+                        <td class="sortCol"><div>Description<span></span></div></td>
+                        <td class="sortCol"><div>Date<span></span></div></td>
+                        <td>File info</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">
+                            <div class="itemActions">
+                                <label>Apply action:</label>
+                                <select>
+                                    <option value="">Select action...</option>
+                                    <option value="Edit">Edit</option>
+                                    <option value="Delete">Delete</option>
+                                    <option value="Move">Move somewhere</option>
+                                </select>
+                            </div>
+                            <div class="tPagination">
+                                <ul>
+                                    <li class="prev"><a href="#" title=""></a></li>
+                                    <li><a href="#" title="">1</a></li>
+                                    <li><a href="#" title="">2</a></li>
+                                    <li><a href="#" title="">3</a></li>
+                                    <li><a href="#" title="">4</a></li>
+                                    <li><a href="#" title="">5</a></li>
+                                    <li><a href="#" title="">6</a></li>
+                                    <li>...</li>
+                                    <li><a href="#" title="">20</a></li>
+                                    <li class="next"><a href="#" title=""></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" id="titleCheck2" name="checkRow" /></td>
+                        <td align="center"><a href="images/big.png" title="" rel="lightbox"><img src="images/user.png" alt="" /></a></td>
+                        <td><a href="#" title="">用户名1</a></td>
+                        <td align="center">创建日期1</td>
+                        <td class="fileInfo">手机账号1</td>
+                        <td class="actBtns"><a href="#" title="Update" class="tipS"><img src="images/icons/edit.png" alt="" /></a><a href="#" title="Remove" class="tipS"><img src="images/icons/remove.png" alt="" /></a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="titleCheck3" name="checkRow" /></td>
+                        <td align="center"><a href="images/big.png" title="" rel="lightbox"><img src="images/user.png" alt="" /></a></td>
+                        <td><a href="#" title="">用户名2</a></td>
+                        <td align="center">创建日期1</td>
+                        <td class="fileInfo"><span>手机账号2</td>
+                        <td class="actBtns"><a href="#" title="Update" class="tipS"><img src="images/icons/edit.png" alt="" /></a><a href="#" title="Remove" class="tipS"><img src="images/icons/remove.png" alt="" /></a></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    
+    	<!-- Dynamic table -->
+        
     
     </div>
     

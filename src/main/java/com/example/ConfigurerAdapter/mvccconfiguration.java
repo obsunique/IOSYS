@@ -7,19 +7,19 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class mvccconfiguration implements WebMvcConfigurer{
+public class mvccconfiguration implements WebMvcConfigurer {
 
 	@Autowired
 	private managementAdapter managementAdapter;
-	
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub
 		InterceptorRegistration registration = registry.addInterceptor(managementAdapter);
-		
-		registration.addPathPatterns("/**"); //拦截所有路径
-		
-		registration.excludePathPatterns("/android/**","/Aipface/**"); //不拦截的路径
+
+		registration.addPathPatterns("/**"); // 拦截所有路径
+
+		registration.excludePathPatterns("/android/**", "/Aipface/**", "/pc/admin/**"); // 不拦截的路径
 	}
-	
+
 }

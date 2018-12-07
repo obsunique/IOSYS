@@ -1,4 +1,4 @@
-package com.example.Android.servlet.message;
+package com.example.Android.servlet;
 
 import com.example.pojo.UserPerfectWithBLOBs;
 

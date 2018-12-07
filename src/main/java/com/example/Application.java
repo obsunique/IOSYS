@@ -15,7 +15,7 @@ public class Application {
 
 	@RequestMapping("/helloworld")
 	public String helloworld() {
-		return "test";
+		return "management/index";
 	}
 
 	public static void main(String[] args) throws IOException {

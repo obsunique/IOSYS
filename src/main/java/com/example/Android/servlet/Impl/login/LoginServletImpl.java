@@ -4,8 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.example.Android.servlet.login.LoginServlet;
+import com.example.Android.servlet.LoginServlet;
 import com.example.Util.MD5Util.MD5Tools;
 import com.example.mapper.user.UsersMapper;
 import com.example.mapper.user_perfect.UserPerfectMapper;
@@ -15,6 +16,7 @@ import com.example.pojo.UserPerfectWithBLOBs;
 import com.example.pojo.Users;
 import com.example.pojo.UsersExample;
 
+@Service
 public class LoginServletImpl implements LoginServlet {
 
 	@Autowired
