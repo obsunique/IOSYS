@@ -17,6 +17,11 @@ public class LoginController {
 	private LoginServlet loginservlet;
 	@Autowired
 	private UserMessageServlet usermessage;
+	
+	@RequestMapping("/helloworld")
+	public String helloworld() {
+		return "1";
+	}
 
 	/*
 	 * 发送短信验证码
