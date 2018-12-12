@@ -27,8 +27,8 @@ public class LoginController {
 	 * 发送短信验证码
 	 */
 	@RequestMapping("/sendCode")
-	public String sendCode(String phoneNumber) {
-		String code = SendMessage.send(phoneNumber);
+	public String sendCode(@RequestBody Users user) {
+		String code = SendMessage.send(user.getPhonenumber());
 		return code;
 	}
 
@@ -36,10 +36,7 @@ public class LoginController {
 	 * 用户注册 若账号存在则返回0（注册失败），不存在则返回1（注册成功）
 	 */
 	@RequestMapping("/register")
-	public String userRegister(String phoneNumber, String password) {
-		Users user = new Users();
-		user.setUserphone(phoneNumber);
-		user.setUserpassword(password);
+	public String userRegister(@RequestBody Users user) {
 		String flag = loginservlet.userRegister(user) + "";
 		return flag;
 	}
@@ -53,12 +50,12 @@ public class LoginController {
 	 * String, java.lang.String)
 	 */
 	@RequestMapping("/login")
-	public String userLogin(String number, String password) {
+	public String userLogin(@RequestBody Users user) {
 		String flag = "0";
-		if (number.indexOf("@") > 0)
-			flag = loginservlet.userEmailLogin(number, password) + "";
+		if (user.getPhonenumber().indexOf("@") > 0)
+			flag = loginservlet.userEmailLogin(user.getPhonenumber(), password) + "";
 		else
-			flag = loginservlet.userPhoneLogin(number, password) + "";
+			flag = loginservlet.userPhoneLogin(user.getPhonenumber(), password) + "";
 		return flag;
 	}
 
@@ -66,7 +63,9 @@ public class LoginController {
 	 * 重置密码 若账号存在则返回-2（账号不存在），不存在则返回1（修改成功）
 	 */
 	@RequestMapping("/forget")
-	public String userForget(String number, String password) {
+	public String userForget(@RequestBody Users user) {
+		String number=user.getPhonenumber();
+		String password=user.getPassword();
 		String flag = "-2";
 		Users user = new Users();
 		try {
