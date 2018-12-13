@@ -147,7 +147,7 @@ select[multiple] { border: 1px solid #ddd; box-shadow: 0 0 0 2px #f4f4f4; -webki
 .errorWrapper { position: absolute; top: 70px; bottom: 0; text-align: center; left: 0; right: 0; height: 430px; }
 .errorWrapper .button { margin-bottom: 30px; }
 .sadEmo { background: url(../images/sadEmo.png) no-repeat; display: block; height: 62px; margin: 0 auto 0px auto; width: 62px; }
-.errorWrapper .errorTitle { display: block; text-shadow: 1px 0 0 #fff; text-align: center; font-size: 20px; border-bottom: 1px solid #cdcdcd; padding: 20px 14px; font-weight: bold; color: #d76a6a; font-style: italic; }
+.errorWrapper .errorTitle { display: block; text-shadow: 1px 0 0 #fff; text-align: center; font-size: 20px; border-bottom: 0px solid #cdcdcd; padding: 20px 14px; font-weight: bold; color: #d76a6a; font-style: italic; }
 .errorWrapper .errorNum { color: #fff; font-size: 200px; text-stroke: 1px transparent; padding: 120px 0 80px 0; display: block;
 text-shadow: 0 1px 0 #ccc,
                0 2px 0 #c9c9c9,
