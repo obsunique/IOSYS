@@ -12,14 +12,14 @@ public class Config {
 	/**
 	 * 开发者注册后系统自动生成的账号，可在官网登录后查看
 	 */
-	public static final String ACCOUNT_SID = "680a7c9ccb*****313ce2a854a";
+	public static final String ACCOUNT_SID = "680a7c9ccbf249ca88c2c313ce2a854a";
 
 	/**
 	 * f282a9f807f24409ba9992d479418582 REST URL https://api.miaodiyun.com
 	 * 
 	 * 开发者注册后系统自动生成的TOKEN，可在官网登录后查看
 	 */
-	public static final String AUTH_TOKEN = "20dfd632****71ecee9e551";
+	public static final String AUTH_TOKEN = "20dfd632c5bd4fdf9aa6971ecee9e551";
 
 	/**
 	 * 响应数据类型, JSON或XML

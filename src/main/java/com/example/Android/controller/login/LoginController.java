@@ -1,6 +1,7 @@
 package com.example.Android.controller.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class LoginController {
 	private LoginServlet loginservlet;
 	@Autowired
 	private UserMessageServlet usermessage;
-	
+
 	@RequestMapping("/helloworld")
 	public String helloworld() {
 		return "1";
@@ -28,7 +29,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/sendCode")
 	public String sendCode(@RequestBody Users user) {
-		String code = SendMessage.send(user.getPhonenumber());
+		String code = SendMessage.send(user.getUserphone());
 		return code;
 	}
 
@@ -52,10 +53,10 @@ public class LoginController {
 	@RequestMapping("/login")
 	public String userLogin(@RequestBody Users user) {
 		String flag = "0";
-		if (user.getPhonenumber().indexOf("@") > 0)
-			flag = loginservlet.userEmailLogin(user.getPhonenumber(), password) + "";
+		if (user.getUserphone().indexOf("@") > 0)
+			flag = loginservlet.userEmailLogin(user.getUserphone(), user.getUserpassword()) + "";
 		else
-			flag = loginservlet.userPhoneLogin(user.getPhonenumber(), password) + "";
+			flag = loginservlet.userPhoneLogin(user.getUserphone(), user.getUserpassword()) + "";
 		return flag;
 	}
 
@@ -64,10 +65,10 @@ public class LoginController {
 	 */
 	@RequestMapping("/forget")
 	public String userForget(@RequestBody Users user) {
-		String number=user.getPhonenumber();
-		String password=user.getPassword();
+		String number = user.getUserphone();
+		String password = user.getUserpassword();
 		String flag = "-2";
-		Users user = new Users();
+
 		try {
 			if (number.indexOf("@") > 0)
 				user.setUserid(usermessage.checkPerfectMessageByEmail(number).getUserid());

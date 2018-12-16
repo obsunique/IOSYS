@@ -35,20 +35,19 @@ public class UserMessageController {
 
 	// 更换手机号码
 	@RequestMapping("/updataUserPhone")
-	public String updataUserPhone(String userid, String phoneNumber) {
-		Users user = new Users();
-		user.setUserid(Integer.parseInt(userid));
-		user.setUserphone(phoneNumber);
+	public String updataUserPhone(Users user) {
+
 		String flag = loginservlet.userUpdata(user) + "";
 		return flag;
 	}
 
 	// 查找用户全部信息
 	@RequestMapping("/checkUserPerfectMesaage")
-	public UserAllMessage userPerfectMessageCheck(String userid) {
+	public UserAllMessage userPerfectMessageCheck(UserPerfectWithBLOBs userperfectWithBLOBs) {
+		int userid = userperfectWithBLOBs.getUserid();
 		UserAllMessage userAllmessage = new UserAllMessage();
-		userAllmessage.setUser(loginservlet.checkUserById(Integer.parseInt(userid)));
-		userAllmessage.setUserperfectWithBLOBs(usermessage.checkPerfectMessageById(Integer.parseInt(userid)));
+		userAllmessage.setUser(loginservlet.checkUserById(userid));
+		userAllmessage.setUserperfectWithBLOBs(usermessage.checkPerfectMessageById(userid));
 		if (userAllmessage.getUser() == null)
 			return null;
 		return userAllmessage;
