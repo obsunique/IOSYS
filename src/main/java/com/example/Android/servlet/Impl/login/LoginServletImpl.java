@@ -30,17 +30,19 @@ public class LoginServletImpl implements LoginServlet {
 	@Override
 	public int userRegister(Users user) {
 		UsersExample example = new UsersExample();
-		example.createCriteria().andUserpasswordEqualTo(user.getUserphone());
+		example.createCriteria().andUserphoneEqualTo(user.getUserphone());
 		List<Users> userlist = usersmapper.selectByExample(example);
 		if (userlist.size() < 1) {
 			user.setUsername(user.getUserphone());
 			user.setUserpassword(MD5Tools.KL(MD5Tools.string2MD5(user.getUserpassword())));
 			user.setCreatetime(new Date());
 			usersmapper.insertSelective(user);
+			int userid = usersmapper.selectByExample(example).get(0).getUserid();
+			System.out.println(user.toString());
 			UserPerfectWithBLOBs u = new UserPerfectWithBLOBs();
-			u.setUserid(user.getUserid());
+			u.setUserid(userid);
 			userperfectmapper.insertSelective(u);
-			return 1;
+			return userid;
 		}
 		return 0;
 	}
@@ -55,8 +57,9 @@ public class LoginServletImpl implements LoginServlet {
 	@Override
 	public int userPhoneLogin(String phonenumber, String password) {
 		UsersExample example = new UsersExample();
-		example.createCriteria().andUserpasswordEqualTo(phonenumber);
+		example.createCriteria().andUserphoneEqualTo(phonenumber);
 		List<Users> userlist = usersmapper.selectByExample(example);
+		System.out.println(userlist.size());
 		if (userlist.size() > 0) {
 			if (userlist.get(0).getUserstatus() == 0)
 				return -3;

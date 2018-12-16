@@ -16,6 +16,7 @@ public class LoginController {
 
 	@Autowired
 	private LoginServlet loginservlet;
+
 	@Autowired
 	private UserMessageServlet usermessage;
 
@@ -29,8 +30,10 @@ public class LoginController {
 	 */
 	@RequestMapping("/sendCode")
 	public String sendCode(@RequestBody Users user) {
+		System.out.println(user.toString());
 		String code = SendMessage.send(user.getUserphone());
-		return code;
+		System.out.println(code);
+		return "{\"code\":" + code + "}";
 	}
 
 	/*
@@ -38,8 +41,9 @@ public class LoginController {
 	 */
 	@RequestMapping("/register")
 	public String userRegister(@RequestBody Users user) {
+		System.out.println(user.toString());
 		String flag = loginservlet.userRegister(user) + "";
-		return flag;
+		return "{\"flag\":" + flag + "}";
 	}
 
 	/*
@@ -52,12 +56,24 @@ public class LoginController {
 	 */
 	@RequestMapping("/login")
 	public String userLogin(@RequestBody Users user) {
+		System.out.println(user.toString());
 		String flag = "0";
 		if (user.getUserphone().indexOf("@") > 0)
 			flag = loginservlet.userEmailLogin(user.getUserphone(), user.getUserpassword()) + "";
 		else
 			flag = loginservlet.userPhoneLogin(user.getUserphone(), user.getUserpassword()) + "";
-		return flag;
+		System.out.println(flag);
+		return "{\"flag\":" + flag + "}";
+	}
+
+	@RequestMapping("/userMessage")
+	public String userMessage() {
+		Users user = new Users();
+		user.setUserpassword("123456");
+		user.setUserphone("17665634656");
+		user = loginservlet.checkUserByPhone(user.getUserphone());
+		System.out.println(user.toString());
+		return "{\"flag\":" + user.getUserid() + "}";
 	}
 
 	/*
@@ -65,6 +81,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/forget")
 	public String userForget(@RequestBody Users user) {
+		System.out.println(user.toString());
 		String number = user.getUserphone();
 		String password = user.getUserpassword();
 		String flag = "-2";
@@ -75,12 +92,13 @@ public class LoginController {
 			else
 				user.setUserid(loginservlet.checkUserByPhone(number).getUserid());
 			if (user.getUserid() == null)
-				return flag;
+				return "{\"flag\":" + flag + "}";
 		} catch (Exception e) {
-			return flag;
+			return "{\"flag\":" + flag + "}";
 		}
 		user.setUserpassword(password);
 		flag = loginservlet.userUpdata(user) + "";
-		return flag;
+		System.out.println(flag);
+		return "{\"flag\":" + flag + "}";
 	}
 }

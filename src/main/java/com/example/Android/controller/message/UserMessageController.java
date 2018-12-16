@@ -1,6 +1,7 @@
 package com.example.Android.controller.message;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,29 +22,29 @@ public class UserMessageController {
 
 	// 完善用户信息
 	@RequestMapping("/insertUserPerfectMesaage")
-	public String userPerfectMesaageInsert(UserPerfectWithBLOBs userperfectWithBLOBs) {
+	public String userPerfectMesaageInsert(@RequestBody UserPerfectWithBLOBs userperfectWithBLOBs) {
 		String flag = usermessage.insertPerfectMessage(userperfectWithBLOBs) + "";
-		return flag;
+		return "{\"flag\":" + flag + "}";
 	}
 
 	// 更新用户信息
 	@RequestMapping("/updataUserPerfectMesaage")
-	public String userPerfectMesaageUpdata(UserPerfectWithBLOBs userperfectWithBLOBs) {
+	public String userPerfectMesaageUpdata(@RequestBody UserPerfectWithBLOBs userperfectWithBLOBs) {
 		String flag = usermessage.updataPerfectMessage(userperfectWithBLOBs) + "";
-		return flag;
+		return "{\"flag\":" + flag + "}";
 	}
 
 	// 更换手机号码
 	@RequestMapping("/updataUserPhone")
-	public String updataUserPhone(Users user) {
+	public String updataUserPhone(@RequestBody Users user) {
 
 		String flag = loginservlet.userUpdata(user) + "";
-		return flag;
+		return "{\"flag\":" + flag + "}";
 	}
 
 	// 查找用户全部信息
 	@RequestMapping("/checkUserPerfectMesaage")
-	public UserAllMessage userPerfectMessageCheck(UserPerfectWithBLOBs userperfectWithBLOBs) {
+	public UserAllMessage userPerfectMessageCheck(@RequestBody UserPerfectWithBLOBs userperfectWithBLOBs) {
 		int userid = userperfectWithBLOBs.getUserid();
 		UserAllMessage userAllmessage = new UserAllMessage();
 		userAllmessage.setUser(loginservlet.checkUserById(userid));
