@@ -30,15 +30,27 @@ public class UserMessageController {
 	// 更新用户信息
 	@RequestMapping("/updataUserPerfectMesaage")
 	public String userPerfectMesaageUpdata(@RequestBody UserPerfectWithBLOBs userperfectWithBLOBs) {
-		String flag = usermessage.updataPerfectMessage(userperfectWithBLOBs) + "";
+		System.out.println(userperfectWithBLOBs.toString());
+		int flag = 0;
+		UserPerfectWithBLOBs userperfectWithBLOB = null;
+		if (userperfectWithBLOBs.getUseremail() != null) {
+			userperfectWithBLOB = usermessage.checkPerfectMessageByEmail(userperfectWithBLOBs.getUseremail());
+		}
+		if (userperfectWithBLOB == null)
+			flag = usermessage.updataPerfectMessage(userperfectWithBLOBs);
+		System.out.println(flag);
 		return "{\"flag\":" + flag + "}";
 	}
+
+	// 更新用户身份证
 
 	// 更换手机号码
 	@RequestMapping("/updataUserPhone")
 	public String updataUserPhone(@RequestBody Users user) {
-
-		String flag = loginservlet.userUpdata(user) + "";
+		Users users = loginservlet.checkUserByPhone(user.getUserphone());
+		int flag = 0;
+		if (users == null)
+			flag = loginservlet.userUpdata(user);
 		return "{\"flag\":" + flag + "}";
 	}
 
