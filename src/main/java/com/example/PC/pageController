@@ -5,18 +5,22 @@ package com.example.PC;
 public class pageController {
 
     @RequestMapping("/login")    //登录页面
-	  public String adminLogin(Admins admin) {
+	  public String adminLogin() {
 		return "management/login";
 	  }
     
     @RequestMapping("/index")   //主页
-	  public String adminLogin(Admins admin) {
+	  public String adminLogin() {
 		return "management/index";
 	  }
     
     @RequestMapping("/user")   //主页
-	  public String adminLogin(Admins admin) {
+	  public String adminLogin() {
 		return "management/user";
+	  }
+    @RequestMapping("/false")   //主页
+	  public String adminLogin() {
+		return "management/500";
 	  }
     
 }
