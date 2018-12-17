@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Android.servlet.LoginServlet;
 import com.example.Android.servlet.UserMessageServlet;
+import com.example.Util.MD5Util.MD5Tools;
 import com.example.Util.SendPhoneCode.SendMessage;
 import com.example.pojo.Users;
 
@@ -43,6 +44,7 @@ public class LoginController {
 	public String userRegister(@RequestBody Users user) {
 		System.out.println(user.toString());
 		String flag = loginservlet.userRegister(user) + "";
+		System.out.println(flag);
 		return "{\"flag\":" + flag + "}";
 	}
 
@@ -96,7 +98,7 @@ public class LoginController {
 		} catch (Exception e) {
 			return "{\"flag\":" + flag + "}";
 		}
-		user.setUserpassword(password);
+		user.setUserpassword(MD5Tools.KL(MD5Tools.string2MD5(password)));
 		flag = loginservlet.userUpdata(user) + "";
 		System.out.println(flag);
 		return "{\"flag\":" + flag + "}";

@@ -67,6 +67,7 @@ public class LoginServletImpl implements LoginServlet {
 				return -2;
 			String m = MD5Tools.string2MD5(password);
 			String n = MD5Tools.JM(userlist.get(0).getUserpassword());
+			System.out.println("提交密码:" + m + " 原密码:" + n);
 			if (n.equals(m))
 				return userlist.get(0).getUserid();
 			else
@@ -96,6 +97,7 @@ public class LoginServletImpl implements LoginServlet {
 					return -2;
 				String m = MD5Tools.string2MD5(password);
 				String n = MD5Tools.JM(user.getUserpassword());
+				System.out.println("提交密码:" + m + " 原密码:" + n);
 				if (m.equals(n))
 					return 1;
 				else
