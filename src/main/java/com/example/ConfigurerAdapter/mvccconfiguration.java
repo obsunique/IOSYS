@@ -24,7 +24,7 @@ public class mvccconfiguration implements WebMvcConfigurer {
 
 		registration.addPathPatterns("/**"); // 拦截所有路径
 
-		registration.excludePathPatterns("/android/**", "/Aipface/**", "/pc/admin/**"); // 不拦截的路径
+		registration.excludePathPatterns("/android/**", "/Aipface/**", "/pc/admin/**","/Turing/login"); // 不拦截的路径
 	}
 
 }
