@@ -14,11 +14,14 @@ public class AdminController {
 	private AdminServlet adminservlet;
 
 	@RequestMapping("/login")
-	public String adminLogin(Admins admin) {
+	public String adminLogin(@Requestbody Admins admin,HttpServletResponse response) {
 		int flag = adminservlet.adminLogin(admin);
 		if (flag == 1) {
-			// 设置Session
+			String time = System.currentTimeMillis()+"";
+			Cookie cookie = new Cookie("TOKEN_ADMIN" , admin);
+			cookie.setMaxAge(60*60*24*7);
+			response.addCookie(cookie);
 		}
-		return flag + "";
+		return "{\"flag\":" + flag + "}";
 	}
 }
