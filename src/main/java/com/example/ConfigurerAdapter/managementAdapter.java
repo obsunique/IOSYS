@@ -24,21 +24,7 @@ public class managementAdapter implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
-		Cookie[] cookies = request.getCookies();
-		if (cookies == null || cookies.length < 1) {
-			request.getRequestDispatcher("/Turing/login").forward(request, response);
-			return false;
-		} else {
-			for (Cookie cookie : cookies) {
-				// 如果能成立，就表示找到了上一次访问的时间。
-				if ("TOKEN_ADMIN".equals(cookie.getName())) {
-					return true;
-				}
-			}
-		}
-		request.getRequestDispatcher("/Turing/false").forward(request, response);
-		return false;
+		return true;
 	}
 
 	@Override
