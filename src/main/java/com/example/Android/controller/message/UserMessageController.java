@@ -32,17 +32,22 @@ public class UserMessageController {
 	public String userPerfectMesaageUpdata(@RequestBody UserPerfectWithBLOBs userperfectWithBLOBs) {
 		System.out.println(userperfectWithBLOBs.toString());
 		int flag = 0;
-		UserPerfectWithBLOBs userperfectWithBLOB = null;
+		UserPerfectWithBLOBs us = null;
 		if (userperfectWithBLOBs.getUseremail() != null) {
-			userperfectWithBLOB = usermessage.checkPerfectMessageByEmail(userperfectWithBLOBs.getUseremail());
+			us = usermessage.checkPerfectMessageByEmail(userperfectWithBLOBs.getUseremail());
 		}
-		if (userperfectWithBLOB == null)
+		if (us == null)
 			flag = usermessage.updataPerfectMessage(userperfectWithBLOBs);
 		System.out.println(flag);
 		return "{\"flag\":" + flag + "}";
 	}
 
-	// 更新用户身份证
+	// 更新用户昵称
+	@RequestMapping("/updataUserName")
+	public String updataUserName(@RequestBody Users user) {
+		int flag = loginservlet.userUpdata(user);
+		return "{\"flag\":" + flag + "}";
+	}
 
 	// 更换手机号码
 	@RequestMapping("/updataUserPhone")
