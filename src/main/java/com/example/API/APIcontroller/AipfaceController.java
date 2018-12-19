@@ -142,5 +142,22 @@ public class AipfaceController {
 		System.out.println(res.toString());
 		return res;
 	}
+	
+	@RequestMapping("/personVerify") // 删除用户组
+	private JSONObject personVerify(@RequestBody AipBean aipBean) // 传递group
+	{
+		// 传入可选参数调用接口
+		HashMap<String, String> options = new HashMap<String, String>(); 
+		options.put("quality_control", "HIGH); 
+		options.put("liveness_control", "HIGH"); 
+		String image = aipBean.getImagein(); 
+		String imageType = "BASE64"; 
+		String idCardNumber = aipBean.getImagein(); //身份证号码
+		String name = aipBean.getImagein(); //名字
+		// 身份验证
+		JSONObject res = AipFaceUtil.client.personVerify(image, imageType, idCardNumber, name, options);
+		System.out.println(res.toString());
+		return res;
+	}
 
 }
