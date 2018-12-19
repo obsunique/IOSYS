@@ -143,40 +143,4 @@ public class AipfaceController {
 		return res;
 	}
 
-	@RequestMapping("/videoFaceliveness") // 活体视频检测
-	private JSONObject videoFaceliveness(@RequestBody AipBean aipBean) // 二进制file数组
-	{
-		// 传入可选参数调用接口
-		HashMap<String, String> options = new HashMap<String, String>();
-
-		// 参数为二进制数组
-		JSONObject res = AipFaceUtil.client.videoFaceliveness(null, aipBean.getFile(), options);
-		System.out.println(res.toString());
-		return res;
-	}
-
-	@RequestMapping("/faceverify") // 在线活体检测
-	private JSONObject faceverify(@RequestBody AipBean aipBean) // 传入base64的图片字符串数组
-	{
-		FaceVerifyRequest req = new FaceVerifyRequest(aipBean.getImagegroupin()[0], "BASE64", "quality"); // ²ÎÊý
-
-		FaceVerifyRequest req1 = new FaceVerifyRequest(aipBean.getImagegroupin()[1], "BASE64", "quality"); // ²ÎÊý
-
-		FaceVerifyRequest req2 = new FaceVerifyRequest(aipBean.getImagegroupin()[2], "BASE64", "quality"); // ²ÎÊý
-
-		ArrayList<FaceVerifyRequest> list = new ArrayList<FaceVerifyRequest>();
-
-		list.add(req);
-
-		list.add(req1);
-
-		list.add(req2);
-
-		JSONObject res = AipFaceUtil.client.faceverify(list);
-
-		System.out.println(res.toString());
-
-		return res;
-	}
-
 }
