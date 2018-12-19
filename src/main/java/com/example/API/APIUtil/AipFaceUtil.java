@@ -4,9 +4,9 @@ import com.baidu.aip.face.AipFace;
 
 public class AipFaceUtil {
 	//设置APPID/AK/SK
-    public String APP_ID = "";
-    public String API_KEY = "";
-    public String SECRET_KEY = "";
+    public String APP_ID = "14980138";
+    public String API_KEY = "fZGEqZroBTvQOy1dDOecwNed";
+    public String SECRET_KEY = "s9DAlZjdzDn3BYr4Zs1EXOan0MWVWSQy";
     public static AipFace client;
 
     public void init() {
