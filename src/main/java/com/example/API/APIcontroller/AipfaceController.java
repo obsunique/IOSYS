@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.baidu.aip.face.FaceVerifyRequest;
 import com.example.API.APIBean.AipBean;
+import com.example.API.APIBean.GroupBean;
+import com.example.API.APIBean.ImageBean;
+import com.example.API.APIBean.PersonBean;
 import com.example.API.APIUtil.AipFaceUtil;
 
 @RestController
@@ -17,7 +20,7 @@ import com.example.API.APIUtil.AipFaceUtil;
 public class AipfaceController {
 
 	@RequestMapping("/detect") // 人脸检测
-	private JSONObject detect(@RequestBody AipBean aipBean) // 传递Imagein
+	private JSONObject detect(@RequestBody ImageBean aipBean) // 传递Imagein
 	{
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>();
@@ -120,7 +123,7 @@ public class AipfaceController {
 	}
 
 	@RequestMapping("/groupAdd") // 创建用户组
-	private JSONObject groupAdd(@RequestBody AipBean aipBean) // 传递group
+	private JSONObject groupAdd(@RequestBody GroupBean aipBean) // 传递group
 	{
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>();
@@ -132,7 +135,7 @@ public class AipfaceController {
 	}
 
 	@RequestMapping("/groupDelete") // 删除用户组
-	private JSONObject groupDelete(@RequestBody AipBean aipBean) // 传递group
+	private JSONObject groupDelete(@RequestBody GroupBean aipBean) // 传递group
 	{
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>();
@@ -144,16 +147,16 @@ public class AipfaceController {
 	}
 	
 	@RequestMapping("/personVerify") // 删除用户组
-	private JSONObject personVerify(@RequestBody AipBean aipBean) // 传递group
+	private JSONObject personVerify(@RequestBody PersonBean personBean) // 传递image,idcard,name
 	{
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>(); 
-		options.put("quality_control", "HIGH); 
+		options.put("quality_control", "HIGH"); 
 		options.put("liveness_control", "HIGH"); 
-		String image = aipBean.getImagein(); 
+		String image = personBean.getImagein(); 
 		String imageType = "BASE64"; 
-		String idCardNumber = aipBean.getImagein(); //身份证号码
-		String name = aipBean.getImagein(); //名字
+		String idCardNumber = personBean.getIdcard(); //身份证号码
+		String name = personBean.getName(); //名字
 		// 身份验证
 		JSONObject res = AipFaceUtil.client.personVerify(image, imageType, idCardNumber, name, options);
 		System.out.println(res.toString());
