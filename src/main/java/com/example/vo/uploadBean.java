@@ -1,6 +1,13 @@
 package com.example.vo;
 
 public class uploadBean {
+		private int userid;
+		public int getUserid() {
+			return userid;
+		}
+		public void setUserid(int userid) {
+			this.userid = userid;
+		}
 		private String imgStr;
 		private String src;
 		private String imgname;
