@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<title>Crown - premium responsive admin template for backend systems</title>
+<link th:href="@{/css/main.css}" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/spinner/ui.spinner.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/spinner/jquery.mousewheel.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/jquery-ui.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/charts/excanvas.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/charts/jquery.flot.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/charts/jquery.flot.orderBars.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/charts/jquery.flot.pie.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/charts/jquery.flot.resize.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/charts/jquery.sparkline.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/forms/uniform.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/jquery.cleditor.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/jquery.validationEngine-en.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/jquery.validationEngine.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/jquery.tagsinput.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/autogrowtextarea.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/jquery.maskedinput.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/jquery.dualListBox.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/jquery.inputlimiter.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/forms/chosen.jquery.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/wizard/jquery.form.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/wizard/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/wizard/jquery.form.wizard.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/uploader/plupload.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/uploader/plupload.html5.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/uploader/plupload.html4.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/uploader/jquery.plupload.queue.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/tables/datatable.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/tables/tablesort.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/tables/resizable.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.tipsy.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.collapsible.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.prettyPhoto.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.progress.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.timeentry.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.colorpicker.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.jgrowl.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.breadcrumbs.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/ui/jquery.sourcerer.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/plugins/calendar.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/elfinder.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/custom.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/charts/chart.js}"></script>
+
+
+
+<!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  --></head>
+
+<body>
+<!-- Left side content -->
+<div id="leftSide">
+    <div class="logo"><a href="http://localhost:8080/helloworld"><img src="images/timg.png" alt=""  height="81" width="136"/></div>
+    
+    <div class="sidebarSep mt0"></div>
+    
+    <!-- Search widget -->
+    <form action="" class="sidebarSearch">
+        <input type="text" name="search" placeholder="search..." id="ac" />
+        <input type="submit" value="" />
+    </form>
+    
+    <div class="sidebarSep"></div>
+
+    <!-- General balance widget -->
+    <div class="genBalance">
+        <a href="#" title="" class="amount">
+            <span>General balance:</span>
+            <span class="balanceAmount">$10,900.36</span>
+        </a>
+        <a href="#" title="" class="amChanges">
+            <strong class="sPositive">+0.6%</strong>
+        </a>
+    </div>
+    
+    <!-- Next update progress widget -->
+    <div class="nextUpdate">
+        <ul>
+            <li>Next update in:</li>
+            <li>23 hrs 14 min</li>
+        </ul>
+        <div class="pWrapper"><div class="progressG" title="78%"></div></div>
+    </div>
+    
+    <div class="sidebarSep"></div>
+    
+    <!-- Left navigation -->
+    <ul id="menu" class="nav">
+       <li class="dash"><a href="http://localhost:8080/helloworld" title="" class="active"><span>主页</span></a></li>
+        <li class="charts"><a href="charts.html" title=""><span>数据统计</span></a></li>
+        <li class="forms"><a href="#" title="" class="exp"><span>紧急修改</span><strong>4</strong></a>
+            <ul class="sub">
+                <li><a href="forms.html" title="">Form elements</a></li>
+                <li><a href="form_validation.html" title="">Validation</a></li>
+                <li><a href="form_editor.html" title="">WYSIWYG and file uploader</a></li>
+                <li class="last"><a href="form_wizards.html" title="">Wizards</a></li>
+            </ul>
+        </li>
+         <li class="ui"><a href="http://localhost:8080/pc/user/checkUserMessage" title=""><span>用户</span></a></li>
+        <li class="tables"><a href="tables.html" title="" class="exp"><span>业务统计</span><strong>3</strong></a>
+            <ul class="sub">
+                <li><a href="table_static.html" title="">Static tables</a></li>
+                <li><a href="table_dynamic.html" title="">Dynamic table</a></li>
+                <li class="last"><a href="table_sortable_resizable.html" title="">Sortable &amp; resizable tables</a></li>
+            </ul>
+        </li>
+        <li class="widgets"><a href="#" title="" class="exp"><span>人脸管理</span><strong>2</strong></a>
+            <ul class="sub">
+                <li><a href="widgets.html" title=""></a></li>
+                <li class="last"><a href="grid.html" title="">Grid</a></li>
+            </ul>
+        </li>
+        <li class="files"><a href="file_manager.html" title=""><span>系统设置</span></a></li>
+        <li class="typo"><a href="#" title="" class="exp"><span>关于我们</span><strong>3</strong></a>
+            <ul class="sub">
+                <li><a href="typography.html" title="">Typography</a></li>
+                <li><a href="calendar.html" title="">Calendar</a></li>
+                <li class="last"><a href="gallery.html" title="">Gallery</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<!-- Right side -->
+<div id="rightSide">
+
+    <!-- Top fixed navigation -->
+    <div class="topNav">
+        <div class="wrapper">
+            <div class="welcome"><a href="#" title=""><img src="images/userPic.png" alt="" /></a><span>Howdy, Eugene!</span></div>
+            <div class="userNav">
+                <ul>
+                    <li><a href="#" title=""><img src="images/icons/topnav/profile.png" alt="" /><span>Profile</span></a></li>
+                    <li><a href="#" title=""><img src="images/icons/topnav/tasks.png" alt="" /><span>Tasks</span></a></li>
+                    <li class="dd"><a title=""><img src="images/icons/topnav/messages.png" alt="" /><span>Messages</span><span class="numberTop">8</span></a>
+                        <ul class="userDropdown">
+                            <li><a href="#" title="" class="sAdd">new message</a></li>
+                            <li><a href="#" title="" class="sInbox">inbox</a></li>
+                            <li><a href="#" title="" class="sOutbox">outbox</a></li>
+                            <li><a href="#" title="" class="sTrash">trash</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" title=""><img src="images/icons/topnav/settings.png" alt="" /><span>Settings</span></a></li>
+                    <li><a href="login.html" title=""><img src="images/icons/topnav/logout.png" alt="" /><span>Logout</span></a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <!-- Responsive header -->
+    
+    
+    <!-- Title area -->
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                <h5>Turning</h5>
+                <span>Are you happy???</span>
+            </div>
+            <div class="middleNav">
+                <ul>
+                    <li class="mUser"><a title=""><span class="users"></span></a>
+                        <ul class="mSub1">
+                            <li><a href="#" title="">Add user</a></li>
+                            <li><a href="#" title="">Statistics</a></li>
+                            <li><a href="#" title="">Orders</a></li>
+                        </ul>
+                    </li>
+                    <li class="mMessages"><a title=""><span class="messages"></span></a>
+                        <ul class="mSub2">
+                            <li><a href="#" title="">New tickets<span class="numberRight">8</span></a></li>
+                            <li><a href="#" title="">Pending tickets<span class="numberRight">12</span></a></li>
+                            <li><a href="#" title="">Closed tickets</a></li>
+                        </ul>
+                    </li>
+                    <li class="mFiles"><a href="#" title="Or you can use a tooltip" class="tipN"><span class="files"></span></a></li>
+                    <li class="mOrders"><a title=""><span class="orders"></span><span class="numberMiddle">8</span></a>
+                        <ul class="mSub4">
+                            <li><a href="#" title="">Pending uploads</a></li>
+                            <li><a href="#" title="">Statistics</a></li>
+                            <li><a href="#" title="">Trash</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="line"></div>
+    
+    
+    <!-- Main content wrapper -->
+    <div class="wrapper">
+    
+        <!-- Note -->
+        <div class="nNote nInformation hideit">
+            <p><strong>INFORMATION: </strong>Top buttons area has 3 versions - 2 kinds of buttons and statistics. All of them could be viewed on <a href="ui_elements.html" title="">Interface elements page</a></p>
+        </div>
+        
+        <!-- Chart -->
+        <div class="widget chartWrapper">
+            <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>Chart</h6></div>
+            <div class="body"><div class="chart"></div></div>
+        </div>
+        
+        <!-- Widgets -->
+        <div class="widgets">
+            <div class="oneTwo">
+            
+                <!-- Partners list widget -->
+                
+            
+                <!-- Website stats widget -->
+                <div class="widget">
+                    <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>网站统计</h6></div>
+                    <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+                        <thead>
+                            <tr>
+                                <td width="80">Amount</td>
+                                <td>Description</td>
+                                <td width="80">Changes</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">980</a></td>
+                                <td>returned visitors</td>
+                                <td><span class="statsPlus">0.32%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">1545</a></td>
+                                <td>new registrations</td>
+                                <td><span class="statsMinus">82.3%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">457</a></td>
+                                <td>new affiliates registrations</td>
+                                <td><span class="statsPlus">100%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">9543</a></td>
+                                <td>new visitors</td>
+                                <td><span class="statsPlus">4.99%</span></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a href="#" title="" class="webStatsLink">354</a></td>
+                                <td>new pending comments</td>
+                                <td><span class="statsMinus">9.67%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>   
+                </div>           
+                <!-- Latest update widget -->             
+            </div>       
+        	<!-- 2 columns widgets -->
+            <div class="oneTwo">
+                <!-- Search -->
+                <!-- Purchase info widget -->
+                <!-- New users widget -->
+                <div class="widget">
+                    <div class="title">
+                    	<img src="images/icons/dark/add.png" alt="" class="titleIcon" /><h6>新用户</h6>
+                    </div>
+                    <div class="wUserInfo">
+                        <a href="#" title="" class="wUserPic"><img src="images/user.png" alt="" /></a>
+                        <ul class="leftList">
+                            <li><a href="#" title=""><strong>用户</strong></a></li>
+                            <li><a href="#" title="">手机</a></li>
+                        </ul>
+                        <ul class="rightList">
+                            <li>
+                            	<a href="#" class="green">查看<strong></strong></a>
+                            </li>
+                            <li>
+                            	<a href="#" class="red">日期</a>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="cLine"></div>    
+                </div>
+            	<!-- My tasks table widget -->             
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    	
+        <!-- Events calendar -->
+        
+    
+        <!-- Media table -->
+        <div class="widget">
+            <div class="title"><span class="titleIcon"><input type="checkbox" id="titleCheck" name="titleCheck" /></span><h6>Media table</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="sTable withCheck mTable" id="checkAll">
+                <thead>
+                    <tr>
+                        <td><img src="images/icons/tableArrows.png" alt="" /></td>
+                        <td>头像</td>
+                        <td class="sortCol"><div>用户名<span></span></div></td>
+                        <td class="sortCol"><div>日期<span></span></div></td>
+                        <td>手机号码</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">
+                            <div class="itemActions">
+                                <label>Apply action:</label>
+                                <select>
+                                    <option value="">Select action...</option>
+                                    <option value="Edit">Edit</option>
+                                    <option value="Delete">Delete</option>
+                                    <option value="Move">Move somewhere</option>
+                                </select>
+                            </div>
+                            <div class="tPagination">
+                                <ul>
+                                    <li class="prev"><a href="#" title=""></a></li>
+                                    <li><a href="#" title="">1</a></li>
+                                    <li><a href="#" title="">2</a></li>
+                                    <li><a href="#" title="">3</a></li>
+                                    <li><a href="#" title="">4</a></li>
+                                    <li><a href="#" title="">5</a></li>
+                                    <li><a href="#" title="">6</a></li>
+                                    <li>...</li>
+                                    <li><a href="#" title="">20</a></li>
+                                    <li class="next"><a href="#" title=""></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr th:each="user : ${userlist}">
+                        <td>
+                        	<input type="checkbox" th:id="${user.userid}" name="checkRow" /></td>
+                        	<td align="center">
+                        		<a th:href="@{/images/big.png}" title="" rel="lightbox">
+                        		<img th:src="@{/images/user.png}" alt="" /></a>
+                        	</td>
+                        <td>
+                        	<a href="#" title=""><span th:text="${user.username}" /></a>
+                        </td>
+                        <td align="center">
+                        	<span th:text="${#calendars.format(user.createtime,'yyyy-MM-dd hh:mm')}">
+                        		
+                        </td>
+                        <td class="fileInfo"><span th:text="${user.userphone}" /></td>
+                        <td class="actBtns">
+                        	<a href="#" title="Update" class="tipS"><img th:src="@{/images/icons/edit.png}" alt="" /></a>
+                        	<a href="#" title="Remove" class="tipS"><img th:src="@{/images/icons/remove.png}" alt="" /></a>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    	<!-- Dynamic table -->
+    </div>
+    
+    <!-- Footer line -->
+
+</div>
+
+<div class="clear"></div>
+
+</body>
+</html>

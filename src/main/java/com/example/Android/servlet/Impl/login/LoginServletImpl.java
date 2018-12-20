@@ -34,7 +34,10 @@ public class LoginServletImpl implements LoginServlet {
 		List<Users> userlist = usersmapper.selectByExample(example);
 		if (userlist.size() < 1) {
 			user.setUsername(user.getUserphone());
-			user.setUserpassword(MD5Tools.KL(MD5Tools.string2MD5(user.getUserpassword())));
+			System.out.println("0" + user.getUserpassword());
+			System.out.println("1" + MD5Tools.string2MD5(user.getUserpassword()));
+
+			user.setUserpassword(MD5Tools.string2MD5(user.getUserpassword()));
 			user.setCreatetime(new Date());
 			usersmapper.insertSelective(user);
 			int userid = usersmapper.selectByExample(example).get(0).getUserid();
@@ -66,8 +69,10 @@ public class LoginServletImpl implements LoginServlet {
 			if (userlist.get(0).getIsdataflag() == -1)
 				return -2;
 			String m = MD5Tools.string2MD5(password);
-			String n = MD5Tools.JM(userlist.get(0).getUserpassword());
-			System.out.println("提交密码:" + m + " 原密码:" + n);
+			String n = userlist.get(0).getUserpassword();
+
+			System.out.println("数据库密码" + userlist.get(0).getUserpassword());
+			System.out.println("提交密码加密:" + m);
 			if (n.equals(m))
 				return userlist.get(0).getUserid();
 			else
@@ -96,7 +101,7 @@ public class LoginServletImpl implements LoginServlet {
 				if (user.getIsdataflag() == -1)
 					return -2;
 				String m = MD5Tools.string2MD5(password);
-				String n = MD5Tools.JM(user.getUserpassword());
+				String n = user.getUserpassword();
 				System.out.println("提交密码:" + m + " 原密码:" + n);
 				if (m.equals(n))
 					return 1;

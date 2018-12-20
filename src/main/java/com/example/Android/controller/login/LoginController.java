@@ -70,12 +70,24 @@ public class LoginController {
 
 	@RequestMapping("/userMessage")
 	public String userMessage() {
+		int flag = 0;
 		Users user = new Users();
 		user.setUserpassword("123456");
-		user.setUserphone("17665634656");
-		user = loginservlet.checkUserByPhone(user.getUserphone());
-		System.out.println(user.toString());
-		return "{\"flag\":" + user.getUserid() + "}";
+		user.setUserphone("13715856323");
+		flag = loginservlet.userPhoneLogin(user.getUserphone(), user.getUserpassword());
+		System.out.println(flag);
+		return "{\"flag\":" + flag + "}";
+	}
+
+	@RequestMapping("/userAMessage")
+	public String userAMessage() {
+		int flag = 0;
+		Users user = new Users();
+		user.setUserpassword("123456");
+		user.setUserphone("13715856323");
+		flag = loginservlet.userRegister(user);
+		System.out.println(flag);
+		return "{\"flag\":" + flag + "}";
 	}
 
 	/*
@@ -98,7 +110,7 @@ public class LoginController {
 		} catch (Exception e) {
 			return "{\"flag\":" + flag + "}";
 		}
-		user.setUserpassword(MD5Tools.KL(MD5Tools.string2MD5(password)));
+		user.setUserpassword(MD5Tools.string2MD5(password));
 		flag = loginservlet.userUpdata(user) + "";
 		System.out.println(flag);
 		return "{\"flag\":" + flag + "}";
