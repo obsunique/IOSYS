@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baidu.aip.face.FaceVerifyRequest;
+import com.baidu.aip.ocr.AipOcr;
 import com.example.API.APIBean.AipBean;
 import com.example.API.APIBean.GroupBean;
 import com.example.API.APIBean.ImageBean;
@@ -22,6 +23,7 @@ public class AipfaceController {
 	@RequestMapping("/detect") // 人脸检测
 	private JSONObject detect(@RequestBody ImageBean aipBean) // 传递Imagein
 	{
+		
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>();
 		// 检测属性
@@ -63,6 +65,10 @@ public class AipfaceController {
 	private JSONObject addUser(@RequestBody AipBean aipBean) // 传递imagein，group，user，userinfo
 	{
 		// 传入可选参数调用接口
+		
+		System.out.println(aipBean.getGroup());
+		System.out.println(aipBean.getUser());
+		System.out.println(aipBean.getUserinfo());
 		HashMap<String, String> options = new HashMap<String, String>();
 		options.put("user_info", aipBean.getUserinfo()); // 存储的用户辅助信息
 		options.put("quality_control", "HIGH"); // 照片质量
@@ -81,6 +87,10 @@ public class AipfaceController {
 	private JSONObject updateUser(@RequestBody AipBean aipBean)// 传递imagein，group，user，userinfo
 	{
 		// 传入可选参数调用接口
+		
+		System.out.println(aipBean.getGroup());
+		System.out.println(aipBean.getUser());
+		System.out.println(aipBean.getUserinfo());
 		HashMap<String, String> options = new HashMap<String, String>();
 		options.put("user_info", aipBean.getUserinfo()); // 存储的用户辅助信息
 		options.put("quality_control", "HIGH"); // 照片质量
@@ -99,6 +109,10 @@ public class AipfaceController {
 	private JSONObject faceGetlist(@RequestBody AipBean aipBean)// 传递group，user
 	{
 		// 传入可选参数调用接口
+
+		System.out.println(aipBean.getGroup());
+		System.out.println(aipBean.getUser());
+
 		HashMap<String, String> options = new HashMap<String, String>();
 		String userId = aipBean.getUser(); // 要进行注册的用户
 		String groupId = aipBean.getGroup(); // 要进行注册的用户组
@@ -112,6 +126,10 @@ public class AipfaceController {
 	private JSONObject userCopy(@RequestBody AipBean aipBean) // 传递fromgroup,togroup,user
 	{
 		// 传入可选参数调用接口
+		System.out.println(aipBean.getFromgroup());
+		System.out.println(aipBean.getTogroup());
+		System.out.println(aipBean.getUser());
+
 		HashMap<String, String> options = new HashMap<String, String>();
 		options.put("src_group_id", aipBean.getFromgroup()); // 要复制的组
 		options.put("dst_group_id", aipBean.getTogroup()); // 目标组
@@ -125,6 +143,7 @@ public class AipfaceController {
 	@RequestMapping("/groupAdd") // 创建用户组
 	private JSONObject groupAdd(@RequestBody GroupBean aipBean) // 传递group
 	{
+		System.out.println(aipBean.getGroup());
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>();
 		String groupId = aipBean.getGroup(); // 组名
@@ -137,6 +156,7 @@ public class AipfaceController {
 	@RequestMapping("/groupDelete") // 删除用户组
 	private JSONObject groupDelete(@RequestBody GroupBean aipBean) // 传递group
 	{
+		System.out.println(aipBean.getGroup());
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>();
 		String groupId = aipBean.getGroup(); // 组名
@@ -149,6 +169,9 @@ public class AipfaceController {
 	@RequestMapping("/personVerify") // 删除用户组
 	private JSONObject personVerify(@RequestBody PersonBean personBean) // 传递image,idcard,name
 	{
+		
+		System.out.println(personBean.getIdcard());
+		System.out.println(personBean.getName());
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>(); 
 		options.put("quality_control", "HIGH"); 
